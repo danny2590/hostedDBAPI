@@ -1,25 +1,19 @@
 const express = require("express");
 const db = require("./backend/config/database");
 const bodyParser = require("body-parser");
-const http = require("http");
-const savedNotes = require("./backend/models/notesModel");
+
 const app = express();
 
 app.use(bodyParser.json());
 
 app.use("/notes", require("./backend/routes/index"));
+app.use("/user", require("./backend/routes/account"));
 
 app.get("*", (_, res) =>
   res.status(400).json({
     message: "Invalid API Call"
   })
 );
-
-savedNotes.sync().then(function() {
-  http.createServer(app).listen(app.get("port"), function() {
-    console.log("The Notes Table Exists");
-  });
-});
 
 const port = process.env.PORT || 5000;
 

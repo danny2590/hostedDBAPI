@@ -31,8 +31,8 @@ router.post("/add", (req, res) => {
     );
 });
 
-router.delete("/:note_id", (req, res) => {
-  notes.destroy({ where: { id: req.params.notes_id } });
+router.delete("/:uuid", (req, res) => {
+  notes.destroy({ where: { id: req.params.notes_uuid } });
   res.json({});
 });
 

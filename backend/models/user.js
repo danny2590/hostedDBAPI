@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../config/database.js");
-const notes = require("/notesModel");
+const notes = require("./notesModel");
 
 const account = db.define(
   "userAccount",
@@ -15,7 +15,10 @@ const account = db.define(
       type: Sequelize.CHAR
     },
     accessibleBy: {
-      type: Sequelize.TEXT
+      type: Sequelize.JSON
+    },
+    chosenColor: {
+      type: Sequelize.STRING
     }
   },
   { timestamps: true }
@@ -24,5 +27,5 @@ const account = db.define(
 account.hasOne(notes, { foreignKey: "username" });
 
 account.sync().then(function() {
-  console.log("The Notes Table Exists");
+  console.log("The usersAccount Table Exists");
 });

@@ -22,4 +22,8 @@ const savedNotes = db.define(
   { timestamps: true }
 );
 
+savedNotes.sync().then(function() {
+  console.log("The Notes Table Exists");
+});
+
 module.exports = savedNotes;
