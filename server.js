@@ -1,9 +1,11 @@
 const express = require("express");
 const db = require("./backend/config/database");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/notes", require("./backend/routes/index"));
