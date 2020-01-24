@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 
 // Store hashed password in DB and validate user entered data meets necessary requirements
 router.post(
-  "/add",
+  "/register",
   [
     expressValidator
       .check("username")
@@ -86,7 +86,9 @@ router.get("/login/:username", async (req, res) => {
         console.log("Password did not match!");
         return res
           .status(418)
-          .send("Log-in credentials could not be verified.");
+          .send(
+            "Log-in credentials could not be verified. Password did not match!"
+          );
       }
     })
     .catch(err =>
