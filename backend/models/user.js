@@ -29,3 +29,5 @@ account.hasOne(notes, { foreignKey: "username" });
 account.sync().then(function() {
   console.log("The usersAccount Table Exists");
 });
+
+module.exports = account;
